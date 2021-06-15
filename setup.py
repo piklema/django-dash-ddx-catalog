@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='django-dash-ddx-catalog',
-    version='0.1.0',
+    version='0.1.1',
     description='Auxiliary Django forms for semi-automatic CRUD for dash-devextreme components',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
