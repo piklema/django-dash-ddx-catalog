@@ -30,6 +30,14 @@ class DashDDXBaseForm(object):
             attrs.update(extra_attrs)
 
             ddx_attrs = {}
+            ddx_widget_attr = getattr(self.Meta, 'ddx_widget_attrs', {}).get(f_name, {})
+            if isinstance(ddx_widget_attr, dict):
+                ddx_attrs = ddx_widget_attr.copy()
+            if isinstance(ddx_widget_attr, str):
+                ddx_widget_method = getattr(self, ddx_widget_attr, None)
+                if callable(ddx_widget_method):
+                    ddx_attrs = ddx_widget_method()
+
             if 'maxlength' in attrs:
                 ddx_attrs['maxLength'] = attrs['maxlength']
             if 'min' in attrs:
@@ -71,7 +79,7 @@ class DashDDXBaseForm(object):
                         c(name=f_name, type='datetime' if f.__class__.__name__ == 'DateTimeField' else 'date',
                           value=v,
                           displayFormat='dd.MM.yyyy HH:mm:ss', dateSerializationFormat='yyyy-MM-ddTHH:mm:ssZ',
-                          openOnFieldClick=True, applyValueMode='useButtons', acceptCustomValue=True),
+                          openOnFieldClick=True, applyValueMode='useButtons', acceptCustomValue=True, **ddx_attrs),
                     ])
                 )
             elif f.__class__.__name__ in ('ForeignKey', 'ModelChoiceField'):
@@ -98,6 +106,7 @@ class DashDDXBaseForm(object):
                           displayExpr='name', valueExpr='id', value=v,
                           searchEnabled=True, searchMode='contains', searchExpr='name',
                           searchTimeout=200,  # showDataBeforeSearchOption=True,
+                          **ddx_attrs
                         ),
                     ]),
                 )
@@ -105,7 +114,7 @@ class DashDDXBaseForm(object):
                 tags.append(
                     html.Div(className='option', children=[
                         html.Span(label, style=dict(marginRight=4)),
-                        c(name=f_name, value=bool(value)),
+                        c(name=f_name, value=bool(value), **ddx_attrs),
                     ])
                 )
             elif c.__name__ == 'TextArea':
