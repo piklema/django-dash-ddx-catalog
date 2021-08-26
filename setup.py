@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='django-dash-ddx-catalog',
-    version='0.1.1',
+    version='0.1.2',
     description='Auxiliary Django forms for semi-automatic CRUD for dash-devextreme components',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
@@ -22,8 +22,8 @@ setup(
         'Django>=3.1,<4.0',
         'dj-plotly-dash[all]<0.18.0',
         'dash-devextreme',
-        'dash_core_components<1.14.0',
-        'dash_html_components<1.2.0',
+        'dash_core_components<2.0.0',
+        'dash_html_components<2.0.0',
     ],
     python_requires='>=3.7.*, <4.0.*',
     license='MIT',
