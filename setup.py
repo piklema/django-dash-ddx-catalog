@@ -25,7 +25,7 @@ setup(
         'dash_core_components<2.0.0',
         'dash_html_components<2.0.0',
     ],
-    python_requires='>=3.7.*, <4.0.*',
+    python_requires='>=3.7, <4.0',
     license='MIT',
     zip_safe=False,
     classifiers=[
