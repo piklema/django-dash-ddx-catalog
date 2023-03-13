@@ -7,13 +7,13 @@ except ImportError:
 
 setup(
     name='django-dash-ddx-catalog',
-    version='0.1.3',
+    version='0.1.4',
     description='Auxiliary Django forms for semi-automatic CRUD for dash-devextreme components',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     author='Sergei Pikhovkin',
     author_email='s@pikhovkin.ru',
-    url='https://github.com/pikhovkin/django-dash-ddx-catalog',
+    url='https://github.com/piklema/django-dash-ddx-catalog',
     packages=[
         'dash_ddx_catalog',
     ],
