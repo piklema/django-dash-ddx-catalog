@@ -19,7 +19,7 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        'Django>=3.1,<4.2',
+        'Django>=3.1',
         'dj-plotly-dash[all]<0.19.0',
         'dash-devextreme',
         'dash_core_components<2.0.0',
